@@ -4,9 +4,15 @@ class Api::V1::ForecastController < ApplicationController
 
     def query
         @response = reservamos_query(params[:city])
+        #As was required the response only will include Mexican Cities
         @response = @response.select do |place| 
             place['result_type'] == 'city' && 
             place['country'] == 'México'
+        end
+        #The daily weather forecast api returned 8 days values, not only for 7 days, 
+        #that is why 8 days forecast will be returned
+        @response.each do |city|
+            city['daily_weather_forecast']  = OpenWeather_query(city)['daily']
         end
        
         render :query
