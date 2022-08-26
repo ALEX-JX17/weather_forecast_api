@@ -4,6 +4,10 @@ class Api::V1::ForecastController < ApplicationController
 
     def query
         @response = reservamos_query(params[:city])
+        @response = @response.select do |place| 
+            place['result_type'] == 'city' && 
+            place['country'] == 'México'
+        end
        
         render :query
     end
@@ -15,6 +19,16 @@ class Api::V1::ForecastController < ApplicationController
         url = URI("https://search.reservamos.mx/api/v2/places?q=#{place}")
         res = Net::HTTP.get_response(url)
         JSON(res.body)
+    end
+
+    #OpenWeather's API
+    #Get cities weather forecast
+    def OpenWeather_query(city)
+        lat = city['lat']
+        lon = city['long']
+        url = URI("https://api.openweathermap.org/data/2.5/onecall?lat=#{lat}&lon=#{lon}&exclude=minutely,hourly,alerts&units=metric&appid=a5a47c18197737e8eeca634cd6acb581")
+        res = Net::HTTP.get_response(url)   
+        JSON(res.body)       
     end
 
 end
