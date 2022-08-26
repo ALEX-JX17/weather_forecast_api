@@ -2,6 +2,7 @@ This is a Reservamos challenge Api For Weather Forecast of Mexican cities
 
 ruby version: "3.0.4"
 rails version: "~> 7.0.3", ">= 7.0.3.1"
+
 NOTE: To test the API run your rails server in your localhost and modify the default: http://localhost:3000 as you need it.
 
 Use Case
@@ -19,10 +20,12 @@ GET weather forecast for a given mexican city name
     http://localhost:3000/api/v1/forecast?city=mon
 
 PARAMS
-    city            mon
-                    Total o partial name place for avaible Reservamos's places, but the Api only will response with Mexican cities.
+|    city        |    mon
+|                |    Total o partial name place for avaible Reservamos's places, but the Api only will
+|                |    response with Mexican cities.
 
-EXAMPLE RESPONSE
+EXAMPLE RESPONSE:
+
 {
     "cities": [
         {
