@@ -20,9 +20,10 @@ GET weather forecast for a given mexican city name
     http://localhost:3000/api/v1/forecast?city=mon
 
 PARAMS
-|    city        |    mon
-|                |    Total o partial name place for avaible Reservamos's places, but the Api only will
-|                |    response with Mexican cities.
+
+    city        mon
+
+                Total o partial name place for avaible Reservamos's places, but the Api only will response with Mexican cities.
 
 EXAMPLE RESPONSE:
 
